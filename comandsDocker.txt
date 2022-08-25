@@ -1,0 +1,37 @@
+
+- primeiro baixa a imagem pra depois criar o container
+
+// baixar imagem
+$ docker pull postgres
+
+// listar as imagens instaladas
+$ docker image ls
+
+// criar um container (e já deixa executando)
+$ docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+// --name -> flag para o nome do container;
+// -e -> flag para vairaveis de ambiente, no caso, nome de usuarios e senha
+// -p => flag para escolher a porta do container, faz uma ligação da porta 5432 do host com a porta 5432 do container (5432 porta padrao do postgres, 27017 padrao do mongo)
+// -d -> flag para executar em background
+// postgres é o nome da imagem que vai executada nesse container
+
+// listar containers que estão rodando - usando a flag '-a' lista todos os containers
+$ docker container ls ou $ docker ps
+
+// parar de executar um container - pode ser usado ou o nome do container ou o ID
+$ docker stop pg
+
+// executar um dos containers criados - nome ou ID
+$ docker start pg
+
+- Antes de apagar uma imagem, é necessário parar e deletar o container que esteja usando essa imagem
+- Para deletar um container, ele n deve estar rodando
+
+// deletar um container
+$ docker container rm pg
+
+// deletar uma imagem
+$ docker rmi postgres
+
+// acessar o container de modo iterativa
+$ docker exec -it pg bash

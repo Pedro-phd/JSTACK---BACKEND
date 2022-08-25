@@ -1,0 +1,11 @@
+// para logar no postgres
+$ psql -U root
+
+// listar base de dados
+$ \l
+
+// para conectar a uma base de dados
+$ \c mycontacts
+
+// listar tabelas
+$ \dt
